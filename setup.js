@@ -15,16 +15,6 @@ const setup = () => {
         room.onPlayerChat = function (player, message) {
             if (!message.startsWith(config.prefix)) return
 
-            // Commands.forEach((command) => {
-            //     if (message.startsWith(config.prefix + command.name)) {
-            //         command.action(player, message, room);
-            //     }
-            // });
-
-            // if (Commands.map(command => config.prefix + command.name).includes(message)) {
-            //     return false;
-            // }
-
             const command = Commands.find(command => message.startsWith(config.prefix + command.name));
 
             if (command) {
@@ -43,8 +33,16 @@ const setup = () => {
             console.log(link);
         };
 
-        room.onPlayerJoin = function(player) {
+        room.onPlayerJoin = function (player) {
             console.log(player.name);
+        }
+
+        room.onGameStart = function (player) {
+            config.isStopped = false;
+        }
+
+        room.onGameStop = function (player) {
+            config.isStopped = true;
         }
     });
 }

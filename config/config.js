@@ -3,7 +3,7 @@ require('dotenv').config()
 module.exports = {
     prefix: '!',
     room: {
-        roomName: "Sigma Room 1",
+        roomName: "Server Test",
         maxPlayers: 2,
         public: true,
         noPlayer: true,
@@ -12,9 +12,10 @@ module.exports = {
     stadium: "Small",
     scoreLimit: 5,
     timeLimit: 0,
+    isStopped: true,
     secret: Math.floor(Math.random() * 10000).toString(),
     colors: {
-        RED: 0xFF5555,
+        RED: 0xF25F55,
         BLUE: 0x0000FF,
         YELLOW: 0xFFFF00,
         GREEN: 0x00FF00,
