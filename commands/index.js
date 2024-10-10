@@ -6,10 +6,10 @@ const ping = require("./ping")
 const setTime = require('./time')
 
 const Commands = [
-    new Command('help', ['command'], 'Muestra esta pagina', true, help),
-    new Command('admin', ['code'], 'Le da admin a un jugador', false, giveAdmin),
-    new Command('ping', [], 'Hace un ping a un jugador', false, ping),
-    new Command('time', ['minutes'], 'Establece un tiempo límite', false, setTime)
+    new Command('help', ['command'], 'Muestra esta pagina', help, { optionalArgs: true }),
+    new Command('admin', ['code'], 'Le da admin a un jugador', giveAdmin),
+    new Command('ping', [], 'Hace un ping a un jugador', ping),
+    new Command('time', ['minutes'], 'Establece un tiempo límite', setTime)
 ]
 
 module.exports = Commands
