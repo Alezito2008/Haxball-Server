@@ -4,6 +4,7 @@ const help = require("./help")
 const giveAdmin = require("./admin")
 const ping = require("./ping")
 const setTime = require('./time')
+const setTime = require('./time')
 
 const Commands = [
     new Command('help', ['command'], 'Muestra esta pagina', help, { optionalArgs: true }),
