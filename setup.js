@@ -44,6 +44,26 @@ const setup = () => {
         room.onGameStop = function (player) {
             config.isStopped = true;
         }
+
+        room.onPlayerBallKick = function (player) {
+            config.lastPlayerKick[player.team] = player.name.trim();
+        }
+
+        room.onTeamGoal = function (team) {
+            const color = config.teamColor[team]
+            const lastPlayer = config.lastPlayerKick[team]
+
+            const emoji = team === 1 ? '🔴' : '🔵'
+
+            if (lastPlayer) {
+                room.sendAnnouncement(
+                    `Gol de ${lastPlayer} para el equipo ${emoji}${color.toUpperCase()}${emoji}!`,
+                    null,
+                    config.colors[color.toUpperCase()],
+                    'bold'
+                )
+            }
+        }
     });
 }
 

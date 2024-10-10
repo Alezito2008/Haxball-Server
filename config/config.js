@@ -13,10 +13,18 @@ module.exports = {
     scoreLimit: 5,
     timeLimit: 0,
     isStopped: true,
+    teamColor: {
+        '1': 'red',
+        '2': 'blue'
+    },
+    lastPlayerKick: {
+        red: null,
+        blue: null
+    },
     secret: Math.floor(Math.random() * 10000).toString(),
     colors: {
         RED: 0xF25F55,
-        BLUE: 0x0000FF,
+        BLUE: 0x1E90FF,
         YELLOW: 0xFFFF00,
         GREEN: 0x00FF00,
         ORANGE: 0xFFA500,
@@ -24,7 +32,6 @@ module.exports = {
         PINK: 0xFFC0CB,
         BLACK: 0x000000,
         WHITE: 0xFFFFFF,
-        PRIMARY: 0x1E90FF,
         GRAY: 0xBBBBBB
     }
 }
