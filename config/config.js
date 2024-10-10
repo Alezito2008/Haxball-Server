@@ -4,7 +4,7 @@ module.exports = {
     prefix: '!',
     room: {
         roomName: "Server Test",
-        maxPlayers: 2,
+        maxPlayers: 8,
         public: true,
         noPlayer: true,
         token: process.env.TOKEN

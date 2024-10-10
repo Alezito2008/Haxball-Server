@@ -2,10 +2,6 @@ const config = require("../config/config")
 
 function setTime(player, args, room) {
     let { minutes } = args
-    if (!player.admin) {
-        room.sendAnnouncement('No tienes permisos para usar este comando', player.id, config.colors.RED, 'bold')
-        return
-    }
 
     if (!config.isStopped) {
         room.sendAnnouncement('No podés cambiar el tiempo mientras el partido está en juego', player.id, config.colors.RED, 'bold')

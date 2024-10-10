@@ -15,7 +15,7 @@ function help(player, args, room) {
                 `Descripcion: ${command.description}\n`,
                 player.id,
                 config.colors.GRAY,
-                'bold'
+                'small-bold'
             )
         })
     } else {
@@ -29,13 +29,13 @@ function help(player, args, room) {
             `Descripcion: ${command.description}\n\n`
         })
 
-        texto+='Podes usar !help <comando> para saber informacións sobre un comando en específico'
+        texto+='Podes usar !help <comando> para saber información sobre un comando en específico'
 
         room.sendAnnouncement(
             texto,
             player.id,
             config.colors.GRAY,
-            'bold'
+            'small-bold'
         )
     }
 }
