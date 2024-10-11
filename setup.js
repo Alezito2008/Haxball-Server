@@ -11,6 +11,7 @@ const setup = () => {
         room.setDefaultStadium(config.stadium);
         room.setScoreLimit(config.scoreLimit);
         room.setTimeLimit(config.timeLimit);
+        room.setTeamsLock(config.teamsLock);
 
         room.onPlayerChat = function (player, message) {
             if (!message.startsWith(config.prefix)) return

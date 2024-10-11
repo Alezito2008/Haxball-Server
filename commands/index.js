@@ -7,6 +7,7 @@ const setTime = require('./time')
 const stop = require('./stop')
 const start = require('./start')
 const setScore = require('./score')
+const kickAll = require('./kickall')
 
 const Commands = [
     new Command('help', ['command'], 'Muestra esta pagina', help, { optionalArgs: true }),
@@ -16,6 +17,7 @@ const Commands = [
     new Command('score', ['goals'], 'Establece el puntaje', setScore, { admin: true }),
     new Command('stop', [], 'Detiene el juego', stop, { admin: true }),
     new Command('start', [], 'Inicia el juego', start, { admin: true }),
+    new Command('kickall', [], 'Expulsa a todos los jugadores', kickAll, { admin: true }),
 ]
 
 module.exports = Commands

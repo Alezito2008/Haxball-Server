@@ -13,6 +13,7 @@ module.exports = {
     scoreLimit: 5,
     timeLimit: 0,
     isStopped: true,
+    teamsLock: true,
     teamColor: {
         '1': 'red',
         '2': 'blue'
