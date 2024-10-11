@@ -42,6 +42,11 @@ const setup = () => {
         };
 
         room.onPlayerJoin = function (player) {
+            const redPlayers = room.getPlayerList().filter(p => p.team === 1).length;
+            const bluePlayers = room.getPlayerList().filter(p => p.team === 2).length;
+
+            room.setPlayerTeam(player.id, redPlayers > bluePlayers ? 2 : 1);
+
             data.players[player.id] = {
                 ...player,
                 animation: ['⚽', 'G', 'O', 'L', '⚽']

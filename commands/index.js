@@ -9,6 +9,7 @@ const start = require('./start')
 const setScore = require('./score')
 const kickAll = require('./kickall')
 const setAnimation = require('./animation')
+const shuffle = require('./shuffle')
 
 const Commands = [
     new Command('help', ['command'], 'Muestra esta pagina', help, { optionalArgs: true }),
@@ -20,6 +21,7 @@ const Commands = [
     new Command('start', [], 'Inicia el juego', start, { admin: true }),
     new Command('kickall', [], 'Expulsa a todos los jugadores', kickAll, { admin: true }),
     new Command('animation', ['frames'], 'Establece una animación al hacer gol (ej: !animation GOAL)', setAnimation),
+    new Command('shuffle', [], 'Mezcla los equipos', shuffle, { admin: true }),
 ]
 
 module.exports = Commands
