@@ -20,6 +20,24 @@ function setConfig(player, args, room) {
             } else {
                 room.sendAnnouncement('Valor inválido para sizeEnabled!', player.id, config.colors.RED, 'bold');
             }
+        },
+        minsize: (val) => {
+            if (isNaN(val) || val < 1) {
+                return room.sendAnnouncement('El tamaño debe ser un número y mayor a 0', player.id, config.colors.RED, 'bold')
+            }
+
+            config.minSize = parseFloat(val);
+            setSizes(players, room);
+            room.sendAnnouncement(`Tamaño mínimo cambiado a ${val}`, player.id, config.colors.ORANGE, 'bold');
+        },
+        maxsize: (val) => {
+            if (isNaN(val) || val < 1) {
+                return room.sendAnnouncement('El tamaño debe ser un número y mayor a 0', player.id, config.colors.RED, 'bold')
+            }
+
+            config.maxSize = parseFloat(val);
+            setSizes(players, room);
+            room.sendAnnouncement(`Tamaño máximo cambiado a ${val}`, player.id, config.colors.ORANGE, 'bold');
         }
     }
 

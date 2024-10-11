@@ -1,3 +1,4 @@
+const config = require('../config/config');
 const data = require('../data/players')
 
 function playAnimation(player, frames, room) {
@@ -19,6 +20,16 @@ function playAnimation(player, frames, room) {
 
 function setSizes(players, room) {
     players.forEach(p => {
+        const currentRadius = data.players[p.id].radius
+
+        console.log({currentRadius, maxsize: config.maxSize, minsize: config.minSize, data: data.players[p.id].radius})
+
+        if (currentRadius > config.maxSize) {
+            data.players[p.id].radius = config.maxSize
+        } else if (currentRadius < config.minSize) {
+            data.players[p.id].radius = config.minSize
+        }
+
         room.setPlayerDiscProperties(p.id, { radius: data.players[p.id].radius });
     })
 }

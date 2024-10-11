@@ -104,6 +104,12 @@ const setup = () => {
             }
         }
 
+        room.onPlayerTeamChange = function (player) {
+            if (config.sizeEnabled) {
+                setSizes([player], room);
+            }
+        }
+
         room.onPlayerBallKick = function (player) {
             config.lastPlayerKick[player.team] = player.id;
         }

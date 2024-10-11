@@ -15,6 +15,8 @@ module.exports = {
     isStopped: true,
     teamsLock: true,
     sizeEnabled: false,
+    maxSize: 30,
+    minSize: 5,
     defaultSize: 15,
     teamColor: {
         '1': 'red',
