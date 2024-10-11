@@ -4,6 +4,8 @@ const Commands = require('./commands');
 const data = require('./data/players');
 const fs = require('fs');
 const path = require('path');
+const shuffle = require('./commands/shuffle');
+const { getRandom } = require('./utils/arrayUtils');
 
 const setup = () => {
     HaxballJS.then((HBInit) => {
@@ -56,6 +58,17 @@ const setup = () => {
         }
 
         room.onPlayerLeave = function (player) {
+            const redPlayers = room.getPlayerList().filter(p => p.team === 1)
+            const bluePlayers = room.getPlayerList().filter(p => p.team === 2)
+
+            if (redPlayers.length - bluePlayers.length >= 2) {
+                const randomPlayer = getRandom(redPlayers)
+                room.setPlayerTeam(randomPlayer.id, 2);
+            } else if (bluePlayers.length - redPlayers.length >= 2) {
+                const randomPlayer = getRandom(bluePlayers)
+                room.setPlayerTeam(randomPlayer.id, 1);
+            }
+
             delete data.players[player.id]
         }
 
@@ -65,6 +78,14 @@ const setup = () => {
 
         room.onGameStop = function (player) {
             config.isStopped = true;
+
+            if (player === null) {
+                room.sendAnnouncement('Iniciando siguiente juego en 3 segundos...', null, config.colors.WHITE, 'small-bold');
+                setTimeout(() => {
+                    shuffle(null, null, room);
+                    room.startGame();
+                }, 3000);
+            }
         }
 
         room.onPlayerBallKick = function (player) {
