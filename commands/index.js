@@ -10,6 +10,9 @@ const setScore = require('./score')
 const kickAll = require('./kickall')
 const setAnimation = require('./animation')
 const shuffle = require('./shuffle')
+const setConfig = require('./config')
+const setSize = require('./size')
+const config = require('../config/config')
 
 const Commands = [
     new Command('help', ['command'], 'Muestra esta pagina', help, { optionalArgs: true }),
@@ -22,6 +25,8 @@ const Commands = [
     new Command('kickall', [], 'Expulsa a todos los jugadores', kickAll, { admin: true }),
     new Command('animation', ['frames'], 'Establece una animación al hacer gol (ej: !animation GOAL)', setAnimation),
     new Command('shuffle', [], 'Mezcla los equipos', shuffle, { admin: true }),
+    new Command('config', ['key', 'value'], 'Cambia la configuración de la sala', setConfig, { admin: true }),
+    new Command('size', ['radius'], `Cambia el tamaño del jugador (default: ${config.defaultSize})`, setSize),
 ]
 
 module.exports = Commands

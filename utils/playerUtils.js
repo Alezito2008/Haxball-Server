@@ -1,3 +1,5 @@
+const data = require('../data/players')
+
 function playAnimation(player, frames, room) {
     if (frames && frames.length > 0) {
         let frameIndex = 0;
@@ -15,4 +17,10 @@ function playAnimation(player, frames, room) {
     }
 }
 
-module.exports = { playAnimation };
+function setSizes(players, room) {
+    players.forEach(p => {
+        room.setPlayerDiscProperties(p.id, { radius: data.players[p.id].radius });
+    })
+}
+
+module.exports = { playAnimation, setSizes };

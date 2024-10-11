@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const shuffle = require('./commands/shuffle');
 const { getRandom } = require('./utils/arrayUtils');
-const { playAnimation } = require('./utils/playerUtils');
+const { playAnimation, setSizes } = require('./utils/playerUtils');
 
 const setup = () => {
     HaxballJS.then((HBInit) => {
@@ -52,6 +52,7 @@ const setup = () => {
 
             data.players[player.id] = {
                 ...player,
+                radius: config.defaultSize,
                 animation: ['⚽', 'G', 'O', 'L', '⚽']
             }
 
@@ -75,6 +76,12 @@ const setup = () => {
 
         room.onGameStart = function (player) {
             config.isStopped = false;
+
+            const players = room.getPlayerList()
+
+            if (config.sizeEnabled) {
+                setSizes(players, room);
+            }
         }
 
         room.onGameStop = function (player) {
@@ -86,6 +93,14 @@ const setup = () => {
                     shuffle(null, null, room);
                     room.startGame();
                 }, 3000);
+            }
+        }
+
+        room.onPositionsReset = function () {
+            const players = room.getPlayerList()
+
+            if (config.sizeEnabled) {
+                setSizes(players, room);
             }
         }
 
