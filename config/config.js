@@ -3,7 +3,7 @@ require('dotenv').config()
 module.exports = {
     prefix: '!',
     room: {
-        roomName: "Server Test",
+        roomName: "Server Test (no unirse)",
         maxPlayers: 8,
         public: true,
         noPlayer: true,

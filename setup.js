@@ -6,6 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const shuffle = require('./commands/shuffle');
 const { getRandom } = require('./utils/arrayUtils');
+const { playAnimation } = require('./utils/playerUtils');
 
 const setup = () => {
     HaxballJS.then((HBInit) => {
@@ -44,10 +45,10 @@ const setup = () => {
         };
 
         room.onPlayerJoin = function (player) {
-            const redPlayers = room.getPlayerList().filter(p => p.team === 1).length;
-            const bluePlayers = room.getPlayerList().filter(p => p.team === 2).length;
+            const redCount = room.getPlayerList().filter(p => p.team === 1).length;
+            const blueCount = room.getPlayerList().filter(p => p.team === 2).length;
 
-            room.setPlayerTeam(player.id, redPlayers > bluePlayers ? 2 : 1);
+            room.setPlayerTeam(player.id, redCount > blueCount ? 2 : 1);
 
             data.players[player.id] = {
                 ...player,
@@ -107,18 +108,7 @@ const setup = () => {
                 )
 
                 const frames = data.players[lastPlayer].animation
-                if (frames && frames.length > 0) {
-                    let frameIndex = 0;
-
-                    const animation = setInterval(() => {
-                        if (frameIndex === frames.length) {
-                            room.setPlayerAvatar(lastPlayer, null)
-                            clearInterval(animation)
-                        }
-                        room.setPlayerAvatar(lastPlayer, frames[frameIndex])
-                        frameIndex++
-                    }, 700);
-                }
+                playAnimation(lastPlayer, frames, room);
             }
         }
     });
