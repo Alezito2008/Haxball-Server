@@ -1,6 +1,7 @@
 const HaxballJS = require('haxball.js');
 const config = require('./config/config');
 const Commands = require('./commands');
+const data = require('./data/players')
 
 const setup = () => {
     HaxballJS.then((HBInit) => {
@@ -35,7 +36,16 @@ const setup = () => {
         };
 
         room.onPlayerJoin = function (player) {
+            data.players[player.id] = {
+                ...player,
+                animation: ['⚽', 'G', 'O', 'L', '⚽']
+            }
+
             console.log(player.name);
+        }
+
+        room.onPlayerLeave = function (player) {
+            delete data.players[player.id]
         }
 
         room.onGameStart = function (player) {
@@ -47,7 +57,7 @@ const setup = () => {
         }
 
         room.onPlayerBallKick = function (player) {
-            config.lastPlayerKick[player.team] = player.name.trim();
+            config.lastPlayerKick[player.team] = player.id;
         }
 
         room.onTeamGoal = function (team) {
@@ -58,11 +68,25 @@ const setup = () => {
 
             if (lastPlayer) {
                 room.sendAnnouncement(
-                    `Gol de ${lastPlayer} para el equipo ${emoji}${color.toUpperCase()}${emoji}!`,
+                    `Gol de ${data.players[lastPlayer].name} para el equipo ${emoji}${color.toUpperCase()}${emoji}!`,
                     null,
                     config.colors[color.toUpperCase()],
                     'bold'
                 )
+
+                const frames = data.players[lastPlayer].animation
+                if (frames && frames.length > 0) {
+                    let frameIndex = 0;
+
+                    const animation = setInterval(() => {
+                        if (frameIndex === frames.length) {
+                            room.setPlayerAvatar(lastPlayer, null)
+                            clearInterval(animation)
+                        }
+                        room.setPlayerAvatar(lastPlayer, frames[frameIndex])
+                        frameIndex++
+                    }, 700);
+                }
             }
         }
     });
