@@ -13,8 +13,6 @@ function setAnimation(player, args, room) {
 
     const playerData = data.players[player.id]
     playerData.animation = frames
-
-    console.log(data.players)
 }
 
 module.exports = setAnimation;

@@ -1,0 +1,231 @@
+{
+        //GolMaps.blogspot.com//
+
+	"name" : "Power Big - (GolMaps.blogspot.com)",
+
+	"width" : 600,
+
+	"height" : 270,
+
+	"spawnDistance" : 350,
+
+	"bg" : { "type" : "grass", "width" : 550, "height" : 240, "kickOffRadius" : 80, "cornerRadius" : 0 },
+
+	"playerPhysics" : {
+		"bCoef" : 0.5,
+		"invMass" : 0.5,
+		"damping" : 0.96,
+		"acceleration" : 0.12,
+		"kickingAcceleration" : 0.12,
+		"kickingDamping" : 0.96,
+		"kickStrength" : 11
+
+	},
+
+	"vertexes" : [
+		/* 0 */ { "x" : -550, "y" : 240, "trait" : "ballArea", "cGroup" : ["all" ], "cMask" : ["ball" ] },
+		/* 1 */ { "x" : -550, "y" : 80, "trait" : "ballArea", "cGroup" : ["all" ], "cMask" : ["ball" ] },
+		/* 2 */ { "x" : -550, "y" : -80, "trait" : "ballArea" },
+		/* 3 */ { "x" : -550, "y" : -240, "trait" : "ballArea" },
+		/* 4 */ { "x" : 550, "y" : 240, "trait" : "ballArea" },
+		/* 5 */ { "x" : 550, "y" : 80, "trait" : "ballArea" },
+		/* 6 */ { "x" : 550, "y" : -80, "trait" : "ballArea" },
+		/* 7 */ { "x" : 550, "y" : -240, "trait" : "ballArea" },
+		
+		/* 8 */ { "x" : 0, "y" : 270, "trait" : "kickOffBarrier" },
+		/* 9 */ { "x" : 0, "y" : 80, "trait" : "kickOffBarrier" },
+		/* 10 */ { "x" : 0, "y" : -80, "trait" : "kickOffBarrier" },
+		/* 11 */ { "x" : 0, "y" : -270, "trait" : "kickOffBarrier" },
+		
+		/* 12 */ { "x" : -560, "y" : -80, "trait" : "goalNet" },
+		/* 13 */ { "x" : -580, "y" : -60, "trait" : "goalNet", "cGroup" : ["wall" ] },
+		/* 14 */ { "x" : -580, "y" : 60, "trait" : "goalNet", "cGroup" : ["wall" ] },
+		/* 15 */ { "x" : -560, "y" : 80, "trait" : "goalNet" },
+		/* 16 */ { "x" : 560, "y" : -80, "trait" : "goalNet" },
+		/* 17 */ { "x" : 580, "y" : -60, "trait" : "goalNet" },
+		/* 18 */ { "x" : 580, "y" : 60, "trait" : "goalNet" },
+		/* 19 */ { "x" : 560, "y" : 80, "trait" : "goalNet" },
+		
+		/* 20 */ { "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 565, "y" : 80 },
+		/* 21 */ { "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 565, "y" : 240 },
+		/* 22 */ { "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 565, "y" : -240 },
+		/* 23 */ { "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : 565, "y" : -80 },
+		/* 24 */ { "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : -565, "y" : -240, "cGroup" : ["wall" ] },
+		/* 25 */ { "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : -565, "y" : -80, "cGroup" : ["wall" ] },
+		/* 26 */ { "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : -565, "y" : 80, "cGroup" : ["wall" ] },
+		/* 27 */ { "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "x" : -565, "y" : 240, "cGroup" : ["wall" ] }
+
+	],
+
+	"segments" : [
+		{ "v0" : 0, "v1" : 1, "trait" : "ballArea", "cGroup" : ["all" ], "cMask" : ["ball" ] },
+		{ "v0" : 2, "v1" : 3, "trait" : "ballArea" },
+		{ "v0" : 4, "v1" : 5, "trait" : "ballArea" },
+		{ "v0" : 6, "v1" : 7, "trait" : "ballArea" },
+		
+		{ "v0" : 12, "v1" : 13, "trait" : "goalNet", "curve" : -90 },
+		{ "v0" : 13, "v1" : 14, "trait" : "goalNet", "cGroup" : ["wall" ] },
+		{ "v0" : 14, "v1" : 15, "trait" : "goalNet", "curve" : -90 },
+		{ "v0" : 16, "v1" : 17, "trait" : "goalNet", "curve" : 90 },
+		{ "v0" : 17, "v1" : 18, "trait" : "goalNet" },
+		{ "v0" : 18, "v1" : 19, "trait" : "goalNet", "curve" : 90 },
+		
+		{ "v0" : 8, "v1" : 9, "trait" : "kickOffBarrier" },
+		{ "v0" : 9, "v1" : 10, "trait" : "kickOffBarrier", "curve" : 180, "cGroup" : ["blueKO" ] },
+		{ "v0" : 9, "v1" : 10, "trait" : "kickOffBarrier", "curve" : -180, "cGroup" : ["redKO" ] },
+		{ "v0" : 10, "v1" : 11, "trait" : "kickOffBarrier" },
+		
+		{ "vis" : false, "color" : "CCCCFF", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "v0" : 20, "v1" : 21, "x" : 565 },
+		{ "vis" : false, "color" : "CCCCFF", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "v0" : 22, "v1" : 23, "x" : 565 },
+		{ "vis" : false, "color" : "CCCCFF", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "v0" : 24, "v1" : 25, "x" : -565, "cGroup" : ["wall" ] },
+		{ "vis" : false, "color" : "FFCCCC", "bCoef" : 1, "cMask" : ["ball" ], "trait" : "ballArea", "v0" : 26, "v1" : 27, "cGroup" : ["wall" ] }
+
+	],
+
+	"goals" : [
+		{ "p0" : [-550,80 ], "p1" : [-550,-80 ], "team" : "red" },
+		{ "p0" : [550,80 ], "p1" : [550,-80 ], "team" : "blue" }
+
+	],
+
+	"discs" : [
+		{ "pos" : [-550,80 ], "trait" : "goalPost", "color" : "FFCCCC" },
+		{ "pos" : [-550,-80 ], "trait" : "goalPost", "color" : "FFCCCC" },
+		{ "pos" : [550,80 ], "trait" : "goalPost", "color" : "CCCCFF" },
+		{ "pos" : [550,-80 ], "trait" : "goalPost", "color" : "CCCCFF" },
+		
+		{ "pos" : [-286.0217704772949,-9986.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-286.0217704772949,-9971.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-285.0217704772949,-9931.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-240.02177047729492,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-240.02177047729492,-9962.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-254.02177047729492,-9962.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-286.0217704772949,-10000.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-256.0217704772949,-10000.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-240.02177047729492,-9999.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-208.02177047729492,-9981.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-208.02177047729492,-9965.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-207.02177047729492,-9931.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-192.02177047729492,-9931.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-162.02177047729492,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-162.02177047729492,-9962.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-161.02177047729492,-9981.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-208.02177047729492,-10000.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-175.02177047729492,-10000.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-161.02177047729492,-10001.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-103.02177047729492,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-35.02177047729492,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-35.02177047729492,-9962.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-35.02177047729492,-9977.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-58.02177047729492,-9980.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-35.02177047729492,-10003.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-11.021770477294922,-9978.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-11.021770477294922,-9961.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-10.021770477294922,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [11.978229522705078,-9963.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [34.97822952270508,-9933.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [34.97822952270508,-9963.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [35.97822952270508,-9980.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-3.021770477294922,-9992.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [10.978229522705078,-10004.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [23.978229522705078,-9993.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [57.97822952270508,-9973.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [57.97822952270508,-9957.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [58.97822952270508,-9933.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [102.97822952270508,-9974.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [72.97822952270508,-9960.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [100.97822952270508,-9993.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [57.97822952270508,-10002.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [71.97822952270508,-10003.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [124.97822952270508,-9973.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [161.97822952270508,-9949.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [125.97822952270508,-9931.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [141.97822952270508,-9930.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [157.97822952270508,-9937.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [157.97822952270508,-9961.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [139.97822952270508,-9966.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [124.97822952270508,-10001.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [139.97822952270508,-10004.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [160.97822952270508,-10001.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [120.97822952270508,-9986.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-240.02177047729492,-9947.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-162.02177047729492,-9948.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-208.02177047729492,-9949.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-71.02177047729492,-9990.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-46.02177047729492,-9991.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-0.021770477294921875,-9962.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [22.978229522705078,-9963.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-11.021770477294922,-9947.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [34.97822952270508,-9949.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [57.97822952270508,-9988.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [58.97822952270508,-9944.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [90.97822952270508,-9964.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [88.97822952270508,-10003.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-35.02177047729492,-9948.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [184.97822952270508,-9931.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "FF0000" },
+		{ "pos" : [-176.02177047729492,-9931.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-192.02177047729492,-10000.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-270.0217704772949,-10000.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-255.02177047729492,-9931.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-269.0217704772949,-9931.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-286.0217704772949,-9957.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-286.0217704772949,-9944.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-131.02177047729492,-9987.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-131.02177047729492,-9972.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-130.02177047729492,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-131.02177047729492,-10001.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-131.02177047729492,-9958.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-131.02177047729492,-9945.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-117.02177047729492,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-35.02177047729492,-9990.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-80.02177047729492,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-81.02177047729492,-9962.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-81.02177047729492,-9977.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-81.02177047729492,-10003.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-81.02177047729492,-9948.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [-81.02177047729492,-9990.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "007bff" },
+		{ "pos" : [251.97822952270508,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [251.97822952270508,-9962.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [251.97822952270508,-9977.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [228.97822952270508,-9980.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [251.97822952270508,-10003.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [215.97822952270508,-9990.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [240.97822952270508,-9991.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [251.97822952270508,-9948.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [251.97822952270508,-9990.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [206.97822952270508,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [205.97822952270508,-9962.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [205.97822952270508,-9977.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [205.97822952270508,-10003.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [205.97822952270508,-9948.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [205.97822952270508,-9990.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [300.9782295227051,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [272.9782295227051,-9987.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [272.9782295227051,-9972.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [273.9782295227051,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [272.9782295227051,-10001.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [272.9782295227051,-9958.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [272.9782295227051,-9945.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" },
+		{ "pos" : [286.9782295227051,-9932.01163482666 ], "radius" : 5, "damping" : 1, "speed" : [0,2 ], "bCoef" : 0.1, "invMass" : 1000, "cMask" : ["red","blue" ], "cGroup" : ["wall" ], "color" : "363636" }
+
+	],
+
+	"planes" : [
+		{ "normal" : [0,1 ], "dist" : -240, "trait" : "ballArea" },
+		{ "normal" : [0,-1 ], "dist" : -240, "trait" : "ballArea" },
+		
+		{ "normal" : [0,1 ], "dist" : -270, "bCoef" : 0.1 },
+		{ "normal" : [0,-1 ], "dist" : -270, "bCoef" : 0.1 },
+		{ "normal" : [1,0 ], "dist" : -600, "bCoef" : 0.1 },
+		{ "normal" : [-1,0 ], "dist" : -600, "bCoef" : 0.1 }
+
+	],
+
+	"traits" : {
+		"ballArea" : { "vis" : false, "bCoef" : 1, "cMask" : ["ball" ] },
+		"goalPost" : { "radius" : 8, "invMass" : 0, "bCoef" : 0.5 },
+		"goalNet" : { "vis" : true, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		"kickOffBarrier" : { "vis" : false, "bCoef" : 0.1, "cGroup" : ["redKO","blueKO" ], "cMask" : ["red","blue" ] }
+
+	}
+}

@@ -1,7 +1,9 @@
 const HaxballJS = require('haxball.js');
 const config = require('./config/config');
 const Commands = require('./commands');
-const data = require('./data/players')
+const data = require('./data/players');
+const fs = require('fs');
+const path = require('path');
 
 const setup = () => {
     HaxballJS.then((HBInit) => {
@@ -13,6 +15,10 @@ const setup = () => {
         room.setScoreLimit(config.scoreLimit);
         room.setTimeLimit(config.timeLimit);
         room.setTeamsLock(config.teamsLock);
+        room.setCustomStadium(fs.readFileSync(
+            path.join(__dirname, 'maps/power.hbs'),
+            'utf-8')
+        );
 
         room.onPlayerChat = function (player, message) {
             if (!message.startsWith(config.prefix)) return
