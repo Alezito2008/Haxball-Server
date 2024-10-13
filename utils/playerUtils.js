@@ -32,4 +32,9 @@ function setSizes(players, room) {
     })
 }
 
-module.exports = { playAnimation, setSizes };
+function formatName(player) {
+    const team = player.team === 1 ? '🔴' : player.team === 2 ? '🔵' : '⚫'
+    return `[${team}] ${player.name}`
+}
+
+module.exports = { playAnimation, setSizes, formatName };

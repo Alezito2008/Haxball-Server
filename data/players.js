@@ -1,3 +1,4 @@
-const players = {}
+const players = {
+}
 
 module.exports = { players };

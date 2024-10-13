@@ -3,8 +3,8 @@ require('dotenv').config()
 module.exports = {
     prefix: '!',
     room: {
-        roomName: "Server test (no unirse)",
-        maxPlayers: 8,
+        roomName: "⚽ HAXWORLD 3v3 ⚽",
+        maxPlayers: 16,
         public: true,
         noPlayer: true,
         token: process.env.TOKEN
@@ -18,6 +18,7 @@ module.exports = {
     maxSize: 30,
     minSize: 5,
     defaultSize: 15,
+    teamSize: 3,
     teamColor: {
         '1': 'red',
         '2': 'blue'
