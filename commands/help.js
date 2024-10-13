@@ -22,6 +22,7 @@ function help(player, args, room) {
         let texto = 'Los comandos disponibles son: \n\n'
 
         Commands.forEach(command => {
+            if (command.options.admin && !player.admin) return
             texto+=
             `Comando: ${command.name}\n` +
             (command.args.length > 0 ? // Verifica si hay argumentos
