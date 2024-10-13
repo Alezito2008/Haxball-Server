@@ -120,7 +120,7 @@ const setup = () => {
 
             const emoji = team === 1 ? '🔴' : '🔵'
 
-            if (lastPlayer) {
+            if (lastPlayer && data.players[lastPlayer].name) {
                 room.sendAnnouncement(
                     `Gol de ${data.players[lastPlayer].name} para el equipo ${emoji}${color.toUpperCase()}${emoji}!`,
                     null,
