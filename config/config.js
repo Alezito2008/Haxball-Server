@@ -19,6 +19,8 @@ module.exports = {
     minSize: 5,
     defaultSize: 15,
     teamSize: 3,
+    AFKCheckInterval: 2,
+    AFKTime: 15,
     teamColor: {
         '1': 'red',
         '2': 'blue'

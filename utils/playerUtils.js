@@ -1,5 +1,5 @@
 const config = require('../config/config');
-const data = require('../data/players')
+const data = require('../data/players');
 
 function playAnimation(player, frames, room) {
     if (frames && frames.length > 0) {

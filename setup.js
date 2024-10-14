@@ -5,10 +5,10 @@ const data = require('./data/players');
 const fs = require('fs');
 const path = require('path');
 const shuffle = require('./commands/shuffle');
-const { getRandom } = require('./utils/arrayUtils');
 const { playAnimation, setSizes, formatName, isAfk } = require('./utils/playerUtils');
 const { selectPlayers, balanceTeams } = require('./utils/matchmaking');
 const { hex2ascii } = require('./utils/converter');
+const { checkAFKPlayers } = require('./services/afkService');
 
 const setup = () => {
     HaxballJS.then((HBInit) => {
@@ -53,12 +53,13 @@ const setup = () => {
             const redCount = room.getPlayerList().filter(p => p.team === 1).length;
             const blueCount = room.getPlayerList().filter(p => p.team === 2).length;
 
-            if (redCount !== config.teamSize || blueCount !== config.teamSize) {
+            if (redCount < config.teamSize || blueCount < config.teamSize) {
                 room.setPlayerTeam(player.id, redCount > blueCount ? 2 : 1);
             }
 
             data.players[player.id] = {
                 ...player,
+                lastActivity: Date.now(),
                 afk: false,
                 radius: config.defaultSize,
                 animation: ['⚽', 'G', 'O', 'L', '⚽'],
@@ -78,6 +79,10 @@ const setup = () => {
             config.isStopped = false;
 
             const players = room.getPlayerList()
+
+            players.forEach(p => {
+                data.players[p.id].lastActivity = Date.now();
+            })
 
             if (config.sizeEnabled) {
                 setSizes(players, room);
@@ -112,7 +117,7 @@ const setup = () => {
 
             const emoji = team === 1 ? '🔴' : '🔵'
 
-            if (lastPlayer && data.players[lastPlayer].name) {
+            if (lastPlayer && data.players[lastPlayer] && data.players[lastPlayer].name) {
                 room.sendAnnouncement(
                     `Gol de ${data.players[lastPlayer].name} para el equipo ${emoji}${color.toUpperCase()}${emoji}!`,
                     null,
@@ -165,6 +170,15 @@ const setup = () => {
                 }, 5000);
             }, 1000)
         }
+
+        room.onPlayerActivity = function (player) {
+            data.players[player.id].lastActivity = Date.now();
+        }
+
+        setInterval(() => {
+            if (config.isStopped) return;
+            checkAFKPlayers(room);
+        }, config.AFKCheckInterval * 1000);
     });
 }
 
