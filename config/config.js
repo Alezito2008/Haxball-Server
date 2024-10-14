@@ -3,7 +3,7 @@ require('dotenv').config()
 module.exports = {
     prefix: '!',
     room: {
-        roomName: "⚽ HAXWORLD 3v3 ⚽",
+        roomName: "Server test (no unirse)",
         maxPlayers: 16,
         public: true,
         noPlayer: true,

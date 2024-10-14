@@ -32,9 +32,24 @@ function setSizes(players, room) {
     })
 }
 
+function isAfk(player) {
+    return data.players[player.id].afk
+}
+
 function formatName(player) {
-    const team = player.team === 1 ? '🔴' : player.team === 2 ? '🔵' : '⚫'
+    let team;
+
+    if (isAfk(player)) {
+        team = '😴'
+    } else if (player.team === 0) {
+        team = '👻'
+    } else if (player.team === 1) {
+        team = '🔴'
+    } else {
+        team = '🔵'
+    }
+    
     return `[${team}] ${player.name}`
 }
 
-module.exports = { playAnimation, setSizes, formatName };
+module.exports = { playAnimation, setSizes, formatName, isAfk };

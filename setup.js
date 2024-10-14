@@ -6,8 +6,9 @@ const fs = require('fs');
 const path = require('path');
 const shuffle = require('./commands/shuffle');
 const { getRandom } = require('./utils/arrayUtils');
-const { playAnimation, setSizes, formatName } = require('./utils/playerUtils');
-const { selectPlayers } = require('./utils/matchmaking');
+const { playAnimation, setSizes, formatName, isAfk } = require('./utils/playerUtils');
+const { selectPlayers, balanceTeams } = require('./utils/matchmaking');
+const { hex2ascii } = require('./utils/converter');
 
 const setup = () => {
     HaxballJS.then((HBInit) => {
@@ -26,7 +27,8 @@ const setup = () => {
 
         room.onPlayerChat = function (player, message) {
             if (!message.startsWith(config.prefix)) {
-                room.sendAnnouncement(`${formatName(player)} » ${message}`, null, config.colors.WHITE, 'bold'); // mandar mensaje normal formateado
+                const chatColor = data.players[player.id].afk ? config.colors.GRAY : config.colors.WHITE; // si esta afk gris, sino blanco
+                room.sendAnnouncement(`${formatName(player)} » ${message}`, null, chatColor, 'bold'); // mandar mensaje normal formateado
             } else {
                 const command = Commands.find(command => message.startsWith(config.prefix + command.name)); // encontrar comando
 
@@ -57,36 +59,17 @@ const setup = () => {
 
             data.players[player.id] = {
                 ...player,
+                afk: false,
                 radius: config.defaultSize,
                 animation: ['⚽', 'G', 'O', 'L', '⚽'],
                 lastPlayed: 0,
             }
 
-            console.log(player.name);
+            console.log(`Se unió ${player.name} con ip ${hex2ascii(player.conn)}`);
         }
 
         room.onPlayerLeave = function (player) {
-            const redPlayers = room.getPlayerList().filter(p => p.team === 1)
-            const bluePlayers = room.getPlayerList().filter(p => p.team === 2)
-            const spectators = room.getPlayerList().filter(p => p.team === 0)
-
-            // if (redPlayers.length - bluePlayers.length >= 2) {
-            //     const randomPlayer = getRandom(redPlayers)
-            //     room.setPlayerTeam(randomPlayer.id, 2);
-            // } else if (bluePlayers.length - redPlayers.length >= 2) {
-            //     const randomPlayer = getRandom(bluePlayers)
-            //     room.setPlayerTeam(randomPlayer.id, 1);
-            // }
-
-            if (spectators.length === 0) return
-            
-            if (redPlayers.length > bluePlayers.length) {
-                const randomPlayer = getRandom(spectators)
-                room.setPlayerTeam(randomPlayer.id, 2);
-            } else if (bluePlayers.length > redPlayers.length) {
-                const randomPlayer = getRandom(spectators)
-                room.setPlayerTeam(randomPlayer.id, 1);
-            }
+            balanceTeams(room)
 
             delete data.players[player.id]
         }
@@ -158,7 +141,7 @@ const setup = () => {
 
             setTimeout(() => {
                 room.sendAnnouncement(`El equipo ${winnerTeam} ha ganado!`, null, config.colors[winnerTeam.toUpperCase()], 'bold');
-                const spectators = room.getPlayerList().filter(p => p.team === 0);
+                const spectators = room.getPlayerList().filter(p => p.team === 0 && !isAfk(p));
                 const spectatorsData = spectators.map(s => data.players[s.id]);
                 const newPlayers = selectPlayers(spectatorsData)
 
