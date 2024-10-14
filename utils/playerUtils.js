@@ -52,4 +52,8 @@ function formatName(player) {
     return `[${team}] ${player.name}`
 }
 
-module.exports = { playAnimation, setSizes, formatName, isAfk };
+function resetAFKTimer(player) {
+    data.players[player.id].lastActivity = Date.now()
+}
+
+module.exports = { playAnimation, setSizes, formatName, isAfk, resetAFKTimer };

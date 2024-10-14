@@ -5,7 +5,7 @@ const data = require('./data/players');
 const fs = require('fs');
 const path = require('path');
 const shuffle = require('./commands/shuffle');
-const { playAnimation, setSizes, formatName, isAfk } = require('./utils/playerUtils');
+const { playAnimation, setSizes, formatName, isAfk, resetAFKTimer } = require('./utils/playerUtils');
 const { selectPlayers, balanceTeams } = require('./utils/matchmaking');
 const { hex2ascii } = require('./utils/converter');
 const { checkAFKPlayers } = require('./services/afkService');
@@ -81,7 +81,7 @@ const setup = () => {
             const players = room.getPlayerList()
 
             players.forEach(p => {
-                data.players[p.id].lastActivity = Date.now();
+                resetAFKTimer(p)
             })
 
             if (config.sizeEnabled) {
@@ -172,7 +172,7 @@ const setup = () => {
         }
 
         room.onPlayerActivity = function (player) {
-            data.players[player.id].lastActivity = Date.now();
+            resetAFKTimer(player)
         }
 
         setInterval(() => {

@@ -1,6 +1,7 @@
 const config = require("../config/config")
 const { shuffleArray, getRandom } = require("./arrayUtils")
-const { isAfk } = require("./playerUtils")
+const { isAfk, resetAFKTimer } = require("./playerUtils")
+const data = require('../data/players')
 
 function selectPlayers(players) {
     if (players.length <= config.teamSize) return players
@@ -37,6 +38,8 @@ function balanceTeams(room) {
     } else if (redPlayers.length === bluePlayers.length && redPlayers.length < config.teamSize) {
         room.setPlayerTeam(randomPlayer.id, getRandom([1, 2]));
     }
+
+    resetAFKTimer(randomPlayer);
 }
 
 module.exports = { selectPlayers, balanceTeams }
