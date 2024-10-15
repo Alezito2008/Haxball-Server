@@ -27,19 +27,34 @@ function balanceTeams(room) {
     const bluePlayers = players.filter(p => p.team === 2)
     const spectators = players.filter(p => p.team === 0 && !isAfk(p))
 
-    if (spectators.length === 0) return
+    if (redPlayers.length === bluePlayers.length && redPlayers.length >= config.teamSize) return
 
-    const randomPlayer = getRandom(spectators)
+    let selectedPlayer, teamToMove;
 
-    if (redPlayers.length > bluePlayers.length) {
-        room.setPlayerTeam(randomPlayer.id, 2);
-    } else if (bluePlayers.length > redPlayers.length) {
-        room.setPlayerTeam(randomPlayer.id, 1);
-    } else if (redPlayers.length === bluePlayers.length && redPlayers.length < config.teamSize) {
-        room.setPlayerTeam(randomPlayer.id, getRandom([1, 2]));
+    if (spectators.length === 0) {
+        if (redPlayers.length > bluePlayers.length) {
+            selectedPlayer = getRandom(redPlayers)
+            teamToMove = 2
+        } else if (bluePlayers.length > redPlayers.length) {
+            selectedPlayer = getRandom(bluePlayers)
+            teamToMove = 1
+        }
+    } else {
+        selectedPlayer = getRandom(spectators)
+
+        if (redPlayers.length > bluePlayers.length) {
+            teamToMove = 2
+        } else if (bluePlayers.length > redPlayers.length) {
+            teamToMove = 1
+        } else if (redPlayers.length === bluePlayers.length) {
+            teamToMove = getRandom([1, 2])
+        }
     }
 
-    resetAFKTimer(randomPlayer);
+    if (selectedPlayer) {
+        resetAFKTimer(selectedPlayer)
+        room.setPlayerTeam(selectedPlayer.id, teamToMove)
+    }
 }
 
 module.exports = { selectPlayers, balanceTeams }

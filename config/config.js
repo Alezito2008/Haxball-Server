@@ -10,8 +10,8 @@ module.exports = {
         token: process.env.TOKEN
     },
     stadium: "Small",
-    scoreLimit: 5,
-    timeLimit: 0,
+    scoreLimit: 3,
+    timeLimit: 3,
     isStopped: true,
     teamsLock: true,
     sizeEnabled: false,
@@ -20,7 +20,7 @@ module.exports = {
     defaultSize: 15,
     teamSize: 3,
     AFKCheckInterval: 2,
-    AFKTime: 3,
+    AFKTime: 15,
     teamColor: {
         '1': 'red',
         '2': 'blue'
