@@ -32,6 +32,9 @@ function balanceTeams(room) {
     let selectedPlayer, teamToMove;
 
     if (spectators.length === 0) {
+        // si no hay espectadores, mover a los jugadores
+        if (Math.abs(redPlayers.length - bluePlayers.length) < 2) return
+
         if (redPlayers.length > bluePlayers.length) {
             selectedPlayer = getRandom(redPlayers)
             teamToMove = 2
@@ -40,6 +43,7 @@ function balanceTeams(room) {
             teamToMove = 1
         }
     } else {
+        // meter a uno de los espectadores
         selectedPlayer = getRandom(spectators)
 
         if (redPlayers.length > bluePlayers.length) {
