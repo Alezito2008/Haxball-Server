@@ -16,6 +16,7 @@ const config = require('../config/config')
 const getPlayers = require('./ip')
 const getIp = require('./ip')
 const toggleAfk = require('./afk')
+const afkList = require('./afklist')
 
 const Commands = [
     new Command('help', ['command'], 'Muestra esta pagina', help, { optionalArgs: true }),
@@ -32,6 +33,7 @@ const Commands = [
     new Command('size', ['radius'], `Cambia el tamaño del jugador (default: ${config.defaultSize})`, setSize),
     new Command('ip', ['id'], `Obtiene la ip de un jugador por su id`, getIp, { admin: true }),
     new Command('afk', [], `Alterna el estado afk`, toggleAfk),
+    new Command('afklist', [], `Muestra los jugadores afk`, afkList),
 ]
 
 module.exports = Commands

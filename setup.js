@@ -30,7 +30,10 @@ const setup = () => {
                 const chatColor = data.players[player.id].afk ? config.colors.GRAY : config.colors.WHITE; // si esta afk gris, sino blanco
                 room.sendAnnouncement(`${formatName(player)} » ${message}`, null, chatColor, 'bold'); // mandar mensaje normal formateado
             } else {
-                const command = Commands.find(command => message.startsWith(config.prefix + command.name)); // encontrar comando
+                // const command = Commands.find(command => message.startsWith(config.prefix + command.name)); // encontrar comando
+                const command = Commands.find(command => 
+                    new RegExp(`${config.prefix}${command.name}(\\s|$)`).test(message)
+                ); // encontrar comando
 
                 if (command) {
                     command.action(player, message, room);
