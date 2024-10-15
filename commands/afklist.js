@@ -9,7 +9,7 @@ function afkList(player, args, room) {
         return
     }
 
-    afkPlayers = afkPlayers.sort((a, b) => a.id - b.id)
+    afkPlayers.sort((a, b) => a.id - b.id)
 
     const afkPlayersNames = afkPlayers.map(p => `${p.name} (id: ${p.id})`).join(', ')
 

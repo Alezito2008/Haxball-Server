@@ -154,7 +154,8 @@ const setup = () => {
                 const newPlayers = selectPlayers(spectatorsData)
 
                 newPlayers.forEach(p => {
-                    room.setPlayerTeam(p.id, winnerTeam === 'blue' ? 1 : 2); // cambiar al equipo perdedor
+                    room.setPlayerTeam(p.id, winnerTeam === 'blue' ? 1 : 2); // cambiar espectadores al equipo perdedor
+                    resetAFKTimer(p)
                 })
 
                 if (room.getPlayerList().filter(p => p.team === 0).length === 0) { // si ya no quedan espectadores
@@ -164,7 +165,6 @@ const setup = () => {
                 room.sendAnnouncement('Iniciando siguiente juego en 5 segundos...', null, config.colors.WHITE, 'small-bold');
 
                 setTimeout(() => {
-                    // set lastplayed to 0 to all teams
                     room.getPlayerList().forEach(p => {
                         if (p.team === 0) return
                         data.players[p.id].lastPlayed = 0;
