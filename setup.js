@@ -159,7 +159,7 @@ const setup = () => {
                     room.setPlayerTeam(p.id, winnerTeam === 'blue' ? 1 : 2); // cambiar espectadores al equipo perdedor
                 })
 
-                if (room.getPlayerList().filter(p => p.team === 0).length === 0) { // si ya no quedan espectadores
+                if (room.getPlayerList().filter(p => p.team === 0 && !isAfk(p)).length === 0) { // si ya no quedan espectadores
                     shuffle(null, null, room);
                 }
 
