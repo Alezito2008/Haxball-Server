@@ -56,7 +56,6 @@ function balanceTeams(room) {
     }
 
     if (selectedPlayer) {
-        resetAFKTimer(selectedPlayer)
         room.setPlayerTeam(selectedPlayer.id, teamToMove)
     }
 }
