@@ -37,7 +37,14 @@ function isAfk(player) {
 }
 
 function formatName(player) {
+    let badge;
     let team;
+
+    if (player.admin) {
+        badge = '👑'
+    } else {
+        badge = ''
+    }
 
     if (isAfk(player)) {
         team = '😴'
@@ -49,7 +56,7 @@ function formatName(player) {
         team = '🔵'
     }
     
-    return `[${team}] ${player.name}`
+    return `${badge} [${team}] ${player.name}`
 }
 
 function resetAFKTimer(player) {

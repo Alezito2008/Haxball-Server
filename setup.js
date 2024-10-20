@@ -27,7 +27,16 @@ const setup = () => {
 
         room.onPlayerChat = function (player, message) {
             if (!message.startsWith(config.prefix)) {
-                const chatColor = data.players[player.id].afk ? config.colors.GRAY : config.colors.WHITE; // si esta afk gris, sino blanco
+                let chatColor;
+
+                if (player.admin) {
+                    chatColor = config.colors.LIGHT_YELLOW;
+                } else if (isAfk(player)) {
+                    chatColor = config.colors.GRAY;
+                } else {
+                    chatColor = config.colors.WHITE;
+                }
+
                 room.sendAnnouncement(`${formatName(player)} » ${message}`, null, chatColor, 'bold'); // mandar mensaje normal formateado
             } else {
                 // const command = Commands.find(command => message.startsWith(config.prefix + command.name)); // encontrar comando

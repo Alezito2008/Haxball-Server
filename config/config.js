@@ -34,6 +34,7 @@ module.exports = {
         RED: 0xF25F55,
         BLUE: 0x1E90FF,
         YELLOW: 0xFFFF00,
+        LIGHT_YELLOW: 0xFFF9AB,
         GREEN: 0x00FF00,
         ORANGE: 0xFFA500,
         PURPLE: 0x800080,
